@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Delete Car{% endblock %}
+
+{% block content %}
+<h2>Delete Car</h2>
+
+<div style="background: white; padding: 1.5rem; border-radius: 8px; max-width: 500px; box-shadow: 0 2px 7px rgba(0,0,0,0.1);">
+    <p>Are you sure you want to delete <strong>{{ car.make }} {{ car.model }}</strong>?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn" style="background:#e74c3c;">Yes, Delete</button>
+        <a href="{% url 'car_details' car.pk %}" class="btn" style="background:#95a5a6;">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Car List{% endblock %}
+
+{% block content %}
+<h2>Available Cars</h2>
+
+{% if cars %}
+    <div style="display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.5rem;">
+        {% for car in cars %}
+            <div style="background: #fff; padding: 1rem; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h3 style="margin-top: 0;">{{ car.make }} {{ car.model }}</h3>
+                <p><strong>Year:</strong> {{ car.year }}</p>
+                <p><strong>Fuel:</strong> {{ car.fuel_type }}</p>
+                <p><strong>Price:</strong> ${{ car.price }}</p>
+                <a href="{% url 'car_details' car.pk %}" class="btn">View Details</a>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No cars available.</p>
+{% endif %}
+{% endblock %}

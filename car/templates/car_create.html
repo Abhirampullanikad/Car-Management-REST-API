@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% block title %}Create Car{% endblock %}
+{% block content %}
+
+<h2>Create a New Car</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="make" class="form-label">Make</label>
+    <input type="text" name="make" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label for="model" class="form-label">Model</label>
+    <input type="text" name="model" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label for="year" class="form-label">Year</label>
+    <input type="number" name="year" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input type="number" step="0.01" name="price" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label for="fuel_type" class="form-label">Fuel Type</label>
+    <select name="fuel_type" class="form-select" required>
+      <option value="">Select</option>
+      <option>Petrol</option>
+      <option>Diesel</option>
+      <option>Electric</option>
+      <option>Hybrid</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Car</button>
+</form>
+
+{% endblock %}
